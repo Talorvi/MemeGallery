@@ -1,0 +1,7 @@
+node_modules
+assets
+client
+.env
+.idea
+package-lock.json
+/.idea/
