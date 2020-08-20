@@ -1,6 +1,7 @@
 import upload from './jobs/upload.js'
 import getMemes from "./jobs/get-memes.js";
 import removeMeme from "./jobs/remove-meme.js";
+import getSounds from "./jobs/get-sounds.js";
 
 export default class Router {
     constructor(app) {
@@ -26,5 +27,9 @@ export default class Router {
         this.app.post('/remove-meme', async (req, res) => {
             await removeMeme(req, res);
         })
+
+        this.app.get('/get-sounds', async (req, res) => {
+            await getSounds(req, res);
+        });
     }
 }

@@ -17,5 +17,9 @@ export const fields = {
     file: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    type: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }

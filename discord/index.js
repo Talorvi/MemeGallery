@@ -48,9 +48,9 @@ export default class Discord {
     }
 
     async userLeftEvent(oldMember, newMember) {
-        if (oldMember.channel && !newMember.channel) {
-            //TODO: user left
-        }
+        // if (oldMember.channel && !newMember.channel) {
+        //     //TODO: user left
+        // }
     }
 
     updatePresenceJob() {

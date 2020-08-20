@@ -14,22 +14,33 @@ export default async function upload(req, res) {
         } else {
             let avatar = req.files.avatar;
             const uuid = uuidv4();
-            const meme = Meme.build({name: req.query.name, file: uuid + getExtension(avatar.name)});
-            await meme.save();
-            avatar.mv('./assets/memes/' + uuid + getExtension(avatar.name));
-            res.send({
-                status: true,
-                message: 'File is uploaded',
-                data: {
-                    name: avatar.name,
-                    mimetype: avatar.mimetype,
-                    size: avatar.size
-                }
-            });
+
+            if (getExtension(avatar.name) === "mp3") {
+                console.log("plik mp3");
+            }
+
+            const meme = Meme.build({name: req.query.name, file: uuid + getExtension(avatar.name), type: getExtension(avatar.name)});
+            try {
+                await meme.save();
+                avatar.mv('./assets/memes/' + uuid + getExtension(avatar.name));
+                res.send({
+                    status: true,
+                    message: 'File is uploaded',
+                    data: {
+                        name: avatar.name,
+                        mimetype: avatar.mimetype,
+                        size: avatar.size
+                    }
+                });
+            }
+            catch (error) {
+                await meme.destroy();
+                res.status(500).send(error);
+            }
         }
-    } catch (err) {
-        console.error(err);
-        res.status(500).send(err);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
     }
 }
 
