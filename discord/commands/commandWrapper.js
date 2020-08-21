@@ -1,5 +1,7 @@
 import JoinCommand from "./joinCommand.js"
 import MemeCommand from "./memeCommand.js";
+import SoundCommand from "./soundCommand.js";
+import YtCommand from "./ytCommand.js";
 
 export default class CommandWrapper {
     constructor(message) {
@@ -11,6 +13,14 @@ export default class CommandWrapper {
 
         if (this.message.content.includes('/meme')) {
             new MemeCommand(this.message).run();
+        }
+
+        if (this.message.content.includes('/sound')) {
+            new SoundCommand(this.message).run();
+        }
+
+        if  (this.message.content.includes('/yt')) {
+            new YtCommand(this.message).run();
         }
     }
 }
