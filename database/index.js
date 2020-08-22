@@ -39,6 +39,6 @@ export default class Database {
             sequelize: this.connection,
             modelName: 'Meme'
         });
-        // Meme.sync({ alter: true });
+        Meme.sync({ alter: true });
     }
 }

@@ -6,9 +6,9 @@ const { Op } = sequelize;
 
 export default class MemeCommand extends Command {
     async run() {
-        const regexp = new RegExp(/meme (.*)/);
+        const regexp = new RegExp(/(m|meme) (.*)/);
         const imageName = this.message.content.match(regexp);
-        const meme = await Meme.findOne({where: {name: imageName[1], type: {[Op.ne]: '.mp3'}}});
+        const meme = await Meme.findOne({where: {name: imageName[2], type: {[Op.ne]: '.mp3'}}});
         if (meme) {
             const attachment = new MessageAttachment('./assets/memes/' + meme.file);
             await this.message.channel.send(null, attachment);
