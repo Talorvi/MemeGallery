@@ -4,5 +4,6 @@ Created with nodejs and express.js
 
 Instructions: 
 - npm install
-- create .env file
-- npm run serve
+- create .env and .env.test file
+- npm run serve (for development)
+- npm run production (for production)
