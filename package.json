@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon index.js",
-    "production": "NODE_ENV=production node index.js"
+    "production": "cross-env NODE_ENV=production node index.js"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +28,8 @@
     "uuid": "^8.3.0",
     "ytdl-core": "^3.2.1"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
 }
