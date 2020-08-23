@@ -7,8 +7,12 @@ export default class YtCommand extends Command {
         if (this.message.member.voice.channel) {
             const regexp = new RegExp(/yt (.*)/);
             const link = this.message.content.match(regexp);
+
+            await Helper.getYoutubeLink(link[1]);
+
             if (link) {
-                await Helper.playYouTube(this.message.member.voice.channel, link[0]).then(() => {
+                const properLink = await Helper.getYoutubeLink(link[1]);
+                await Helper.playYouTube(this.message.member.voice.channel, properLink).then(() => {
                     this.message.delete();
                 }).catch(error => {
                     this.message.reply('nie znalazłem takiego filmiku 👁👄👁');
