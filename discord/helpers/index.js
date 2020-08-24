@@ -29,7 +29,7 @@ export default class Helper {
 
     static async getYoutubeLink(link) {
         const regexp = new RegExp(/(https:\/\/www.youtube.com\/watch\?v=|https:\/\/youtu.be\/)(.*)/);
-        const soundName = link.match(regexp);
-        return 'https://www.youtube.com/watch?v=' + soundName[2];
+        const videoLink = link.match(regexp);
+        return 'https://www.youtube.com/watch?v=' + videoLink[2];
     }
 }
